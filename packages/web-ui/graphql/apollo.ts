@@ -1,7 +1,7 @@
-import {ApolloClient, InMemoryCache, NormalizedCacheObject} from "@apollo/client";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 
-const isServer = typeof window === "undefined";
-const windowApolloState = !isServer && window.__NEXT_DATA__.apolloState as any;
+const isServer = typeof window === 'undefined';
+const windowApolloState = !isServer && (window.__NEXT_DATA__.apolloState as any);
 
 let APOLLO_CLIENT: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -11,7 +11,6 @@ export function getApolloClient(forceNew: boolean) {
       ssrMode: isServer,
       uri: 'http://localhost:4000/graphql',
       cache: new InMemoryCache().restore(windowApolloState || {}),
-
     });
   }
 

@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const models = require('./models');
 const expressGraphQL = require('express-graphql');
@@ -18,12 +18,15 @@ mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
   .once('open', () => console.log('Connected to MongoLab instance.'))
-  .on('error', error => console.log('Error connecting to MongoLab:', error));
+  .on('error', (error) => console.log('Error connecting to MongoLab:', error));
 
 app.use(bodyParser.json());
-app.use('/graphql', expressGraphQL({
-  schema,
-  graphiql: true,
-}));
+app.use(
+  '/graphql',
+  expressGraphQL({
+    schema,
+    graphiql: true,
+  })
+);
 
 module.exports = app;

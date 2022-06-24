@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 
 export interface Props {
-  song: any // TODO: describe type
+  song: any; // TODO: describe type
 }
 
-export const Song: FC<Props> = ({song}) => {
-  return <li>{song.toString()}</li>
-}
+export const Song: FC<Props> = ({ song }) => {
+  return <li>{song.toString()}</li>;
+};
