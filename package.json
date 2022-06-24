@@ -1,0 +1,13 @@
+{
+  "name": "lyrical-graphql-monorepo",
+  "private": true,
+  "scripts": {
+    "start": "lerna run start --stream",
+    "dev": "lerna run dev --stream",
+    "prod": "lerna run start-prod --stream",
+    "test": "lerna run test --stream"
+  },
+  "devDependencies": {
+    "lerna": "^5.1.4"
+  }
+}
