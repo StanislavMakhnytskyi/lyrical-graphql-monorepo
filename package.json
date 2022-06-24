@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "lerna": "^5.1.4"
+  },
+  "dependencies": {
+    "prettier": "^2.7.1"
   }
 }
