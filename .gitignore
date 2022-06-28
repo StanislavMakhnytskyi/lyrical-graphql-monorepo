@@ -2,7 +2,6 @@
 node_modules
 scripts/flow/*/.flowconfig
 .flowconfig
-*~
 *.pyc
 .grunt
 _SpecRunner.html
@@ -20,3 +19,4 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+.env
