@@ -5,5 +5,5 @@ export interface Props {
 }
 
 export const Song: FC<Props> = ({ song }) => {
-  return <li>{song.toString()}</li>;
+  return <li>{JSON.stringify(song)}</li>;
 };
