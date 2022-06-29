@@ -1,15 +1,27 @@
 import { ApolloProvider } from '@apollo/react-hooks';
-import { useApollo } from '../graphql/apollo';
 import { AppProps } from 'next/app';
+import { ReactNode } from 'react';
+import { Page } from './types';
+import { useApollo } from '../graphql/apollo';
+import GlobalLayout from '../components/global-layout';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+type Props = AppProps & {
+  Component: Page;
+};
+
+const App = ({ Component, pageProps }: Props) => {
+  const getLayout = Component.getLayout || ((page: ReactNode) => page);
   const apolloClient = useApollo(pageProps);
 
   return (
-    <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
-    </ApolloProvider>
+    <GlobalLayout>
+      {getLayout(
+        <ApolloProvider client={apolloClient}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      )}
+    </GlobalLayout>
   );
 };
 
-export default MyApp;
+export default App;
