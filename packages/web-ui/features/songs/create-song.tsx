@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
 import { gql, useMutation } from '@apollo/client';
 
 export interface Props {}
@@ -18,14 +19,15 @@ const createSong = gql`
 
 export const CreateSong: FC<Props> = () => {
   const [addSongMutation] = useMutation(createSong);
+  const router = useRouter();
 
   const formik = useFormik<CreateSongFormConfig>({
     initialValues: {
       songTitle: '',
     },
-    onSubmit: (values) => {
-      debugger;
-      addSongMutation({ variables: { title: values.songTitle } });
+    onSubmit: async (values) => {
+      await addSongMutation({ variables: { title: values.songTitle } });
+      await router.push('/songs');
     },
   });
 
