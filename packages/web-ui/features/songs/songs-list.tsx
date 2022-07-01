@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Link from 'next/link';
 import { gql, useQuery } from '@apollo/client';
 import { Song } from './song';
 
@@ -22,6 +23,9 @@ export const SongsList: FC<Props> = () => {
     <div>
       SongList:
       {data.songs && data.songs.map((song: any, index: number) => <Song key={index} song={song} />)}
+      <Link href="/songs/create">
+        <a>Add new song</a>
+      </Link>
     </div>
   );
 };
