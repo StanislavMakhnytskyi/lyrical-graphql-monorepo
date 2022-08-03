@@ -1,4 +1,6 @@
 import { FC, ReactNode } from 'react';
+import { ResponsiveAppBar } from './index';
+import Container from '@mui/material/Container';
 
 interface Props {
   children: ReactNode;
@@ -7,8 +9,8 @@ interface Props {
 export const GlobalLayout: FC<Props> = ({ children }) => {
   return (
     <>
-      <nav>Global Layout</nav>
-      <main>{children}</main>
+      <ResponsiveAppBar />
+      <Container maxWidth="xl">{children}</Container>
     </>
   );
 };
