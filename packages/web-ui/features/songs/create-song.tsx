@@ -2,20 +2,14 @@ import React, { FC } from 'react';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import { gql, useMutation } from '@apollo/client';
+import fetchSongs from '../../graphql/queries/fetch-songs';
+import createSong from '../../graphql/queries/create-song';
 
 export interface Props {}
 
 interface CreateSongFormConfig {
   songTitle: string;
 }
-
-const createSong = gql`
-  mutation AddSong($title: String) {
-    addSong(title: $title) {
-      title
-    }
-  }
-`;
 
 export const CreateSong: FC<Props> = () => {
   const [addSongMutation] = useMutation(createSong);
@@ -26,7 +20,7 @@ export const CreateSong: FC<Props> = () => {
       songTitle: '',
     },
     onSubmit: async (values) => {
-      await addSongMutation({ variables: { title: values.songTitle } });
+      await addSongMutation({ variables: { title: values.songTitle }, refetchQueries: [{ query: fetchSongs }] });
       await router.push('/songs');
     },
   });
