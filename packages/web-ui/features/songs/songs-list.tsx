@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
 import { gql, useQuery } from '@apollo/client';
+import Typography from '@mui/material/Typography';
 import { Song } from './song';
+import { Grid } from '@mui/material';
 
 export const GET_SONGS_QUERY = gql`
   {
@@ -20,13 +21,13 @@ export const SongsList: FC<Props> = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <div>
-      SongList:
-      {data.songs && data.songs.map((song: any, index: number) => <Song key={index} song={song} />)}
-      <Link href="/songs/create">
-        <a>Add new song</a>
-      </Link>
-    </div>
+    <Grid container spacing={1} my={5}>
+      {data.songs
+        ?.filter((song) => song.title)
+        .map((song: any, index: number) => (
+          <Song key={index} song={song} />
+        ))}
+    </Grid>
   );
 };
 

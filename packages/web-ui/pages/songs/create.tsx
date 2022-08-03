@@ -1,5 +1,4 @@
 import { CreateSong } from '../../features/songs/create-song';
-import { Layout } from '../../components';
 import { Page } from '../types';
 
 const CreateSongPage: Page = (props) => (
@@ -8,9 +7,5 @@ const CreateSongPage: Page = (props) => (
     <CreateSong />
   </>
 );
-
-CreateSongPage.getLayout = (page) => {
-  return <Layout>{page}</Layout>;
-};
 
 export default CreateSongPage;
