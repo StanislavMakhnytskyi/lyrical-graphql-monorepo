@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "lerna run start --stream",
-    "dev": "lerna run dev --stream",
+    "dev": "lerna run dev --parallel",
     "prod": "lerna run start-prod --stream",
     "test": "lerna run test --stream",
     "lint": "lerna run lint --stream",
@@ -17,6 +17,6 @@
     "lerna": "^5.1.5"
   },
   "dependencies": {
-    "prettier": "^2.7.1"
+    "prettier": "2.7.1"
   }
 }
