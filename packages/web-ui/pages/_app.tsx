@@ -1,7 +1,7 @@
 import { ApolloProvider } from '@apollo/react-hooks';
 import { AppProps } from 'next/app';
 import { ReactNode } from 'react';
-import { Page } from './types';
+import { Page } from '../types/types';
 import { useApollo } from '../graphql/apollo';
 import GlobalLayout from '../components/global-layout';
 

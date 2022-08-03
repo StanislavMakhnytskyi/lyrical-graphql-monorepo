@@ -1,6 +1,7 @@
-import SongsList, { GET_SONGS_QUERY } from '../../features/songs/songs-list';
+import SongsList from '../../features/songs/songs-list';
 import { addApolloState, initializeApollo } from '../../graphql/apollo';
-import { Page } from '../types';
+import { Page } from '../../types/types';
+import fetchSongs from '../../graphql/queries/fetch-songs';
 
 interface Props {}
 
@@ -14,7 +15,7 @@ export async function getServerSideProps() {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: GET_SONGS_QUERY,
+    query: fetchSongs,
   });
 
   return addApolloState(apolloClient, {

@@ -12,6 +12,7 @@
     "@apollo/react-hooks": "^4.0.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@types/lodash": "^4.14.182",
     "deepmerge": "^4.2.2",

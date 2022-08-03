@@ -1,5 +1,5 @@
 import { CreateSong } from '../../features/songs/create-song';
-import { Page } from '../types';
+import { Page } from '../../types/types';
 
 const CreateSongPage: Page = (props) => (
   <>

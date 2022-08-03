@@ -1,22 +1,27 @@
 import React, { FC } from 'react';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Song } from './song';
 import { Grid } from '@mui/material';
 import fetchSongs from '../../graphql/queries/fetch-songs';
+import deleteSong from '../../graphql/queries/delete-song';
 
-interface Song {
+interface ISong {
   id: number;
   title: string;
 }
 
-interface SongsData {
-  songs: Song[];
+interface ISongsData {
+  songs: ISong[];
 }
 
 export interface Props {}
 
 export const SongsList: FC<Props> = () => {
-  const { loading, error, data } = useQuery<SongsData>(fetchSongs);
+  const { loading, error, data } = useQuery<ISongsData>(fetchSongs);
+  const [deleteSongMutation] = useMutation(deleteSong);
+  const deleteSongCallback = async (id: string) => {
+    await deleteSongMutation({ variables: { id }, refetchQueries: [{ query: fetchSongs }] });
+  };
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>{error.message}</p>;
@@ -26,7 +31,7 @@ export const SongsList: FC<Props> = () => {
       {data?.songs
         ?.filter((song) => song.title)
         .map((song: any, index: number) => (
-          <Song key={index} song={song} />
+          <Song key={index} song={song} deleteSong={deleteSongCallback} />
         ))}
     </Grid>
   );
