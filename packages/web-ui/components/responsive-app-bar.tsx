@@ -19,7 +19,7 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const ResponsiveAppBar = () => {
-  const router = useRouter();
+  const { route, push } = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -39,7 +39,7 @@ export const ResponsiveAppBar = () => {
   };
 
   const handleMenuItemClick = (url: string) => {
-    router.push(url);
+    push(url);
     handleCloseUserMenu();
   };
 
@@ -95,7 +95,7 @@ export const ResponsiveAppBar = () => {
               }}
             >
               {pages.map(({ title, url }) => (
-                <MenuItem key={title} onClick={() => handleMenuItemClick(url)}>
+                <MenuItem key={title} onClick={() => handleMenuItemClick(url)} selected={route === url}>
                   <Typography textAlign="center">{title}</Typography>
                 </MenuItem>
               ))}
@@ -124,7 +124,12 @@ export const ResponsiveAppBar = () => {
               <Button
                 key={title}
                 onClick={() => handleMenuItemClick(url)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                  fontWeight: route === url ? 'bold' : '100',
+                }}
               >
                 {title}
               </Button>
