@@ -1,28 +1,29 @@
 import React, { FC } from 'react';
-import { gql, useQuery } from '@apollo/client';
-import Typography from '@mui/material/Typography';
+import { useQuery } from '@apollo/client';
 import { Song } from './song';
 import { Grid } from '@mui/material';
+import fetchSongs from '../../graphql/queries/fetch-songs';
 
-export const GET_SONGS_QUERY = gql`
-  {
-    songs {
-      title
-    }
-  }
-`;
+interface Song {
+  id: number;
+  title: string;
+}
+
+interface SongsData {
+  songs: Song[];
+}
 
 export interface Props {}
 
 export const SongsList: FC<Props> = () => {
-  const { loading, error, data } = useQuery(GET_SONGS_QUERY);
+  const { loading, error, data } = useQuery<SongsData>(fetchSongs);
 
   if (loading) return <p>Loading ...</p>;
   if (error) return <p>{error.message}</p>;
 
   return (
     <Grid container spacing={1} my={5}>
-      {data.songs
+      {data?.songs
         ?.filter((song) => song.title)
         .map((song: any, index: number) => (
           <Song key={index} song={song} />
