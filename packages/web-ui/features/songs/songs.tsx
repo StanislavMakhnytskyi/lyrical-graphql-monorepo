@@ -4,11 +4,7 @@ import { Song } from './song';
 import { Grid } from '@mui/material';
 import fetchSongs from '../../graphql/queries/fetch-songs';
 import deleteSong from '../../graphql/queries/delete-song';
-
-interface ISong {
-  id: number;
-  title: string;
-}
+import { ISong } from '../../types/types';
 
 interface ISongsData {
   songs: ISong[];
@@ -16,7 +12,7 @@ interface ISongsData {
 
 export interface Props {}
 
-export const SongsList: FC<Props> = () => {
+export const Songs: FC<Props> = () => {
   const { loading, error, data } = useQuery<ISongsData>(fetchSongs);
   const [deleteSongMutation] = useMutation(deleteSong);
   const deleteSongCallback = async (id: string) => {
@@ -37,4 +33,4 @@ export const SongsList: FC<Props> = () => {
   );
 };
 
-export default SongsList;
+export default Songs;

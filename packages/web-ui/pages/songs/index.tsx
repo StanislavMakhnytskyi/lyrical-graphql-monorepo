@@ -1,13 +1,13 @@
-import SongsList from '../../features/songs/songs-list';
+import Songs from '../../features/songs/songs';
 import { addApolloState, initializeApollo } from '../../graphql/apollo';
-import { Page } from '../../types/types';
 import fetchSongs from '../../graphql/queries/fetch-songs';
+import { IPage } from '../../types/types';
 
 interface Props {}
 
-const SongsPage: Page<Props> = (props) => (
+const SongsPage: IPage<Props> = (props) => (
   <>
-    <SongsList />
+    <Songs />
   </>
 );
 

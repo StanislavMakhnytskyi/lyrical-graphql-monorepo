@@ -1,12 +1,12 @@
 import { ApolloProvider } from '@apollo/react-hooks';
 import { AppProps } from 'next/app';
 import { ReactNode } from 'react';
-import { Page } from '../types/types';
+import { IPage } from '../types/types';
 import { useApollo } from '../graphql/apollo';
 import GlobalLayout from '../components/global-layout';
 
 type Props = AppProps & {
-  Component: Page;
+  Component: IPage;
 };
 
 const App = ({ Component, pageProps }: Props) => {

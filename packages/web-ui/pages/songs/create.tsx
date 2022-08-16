@@ -1,7 +1,7 @@
 import { CreateSong } from '../../features/songs/create-song';
-import { Page } from '../../types/types';
+import { IPage } from '../../types/types';
 
-const CreateSongPage: Page = (props) => (
+const CreateSongPage: IPage = (props) => (
   <>
     <h3>CreateSongPage</h3>
     <CreateSong />

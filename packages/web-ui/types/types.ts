@@ -1,6 +1,11 @@
 import { NextPage } from 'next';
 import { ReactNode } from 'react';
 
-export type Page<P = {}> = NextPage<P> & {
+export type IPage<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactNode) => ReactNode;
 };
+
+export interface ISong {
+  id: string;
+  title: string;
+}
