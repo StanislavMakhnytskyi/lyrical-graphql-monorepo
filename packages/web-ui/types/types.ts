@@ -8,4 +8,5 @@ export type IPage<P = {}> = NextPage<P> & {
 export interface ISong {
   id: string;
   title: string;
+  lyrics?: { content: string }[];
 }
