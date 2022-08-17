@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
-import merge from 'deepmerge';
-import { AppProps } from 'next/app';
-import isEqual from 'lodash/isEqual';
+import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
+import merge from 'deepmerge';
+import isEqual from 'lodash/isEqual';
+import { AppProps } from 'next/app';
+import { useMemo } from 'react';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 

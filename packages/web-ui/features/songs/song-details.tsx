@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import Grid from '@mui/material/Grid';
-import { ISong } from '../../types/types';
-import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useRouter } from 'next/router';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { useRouter } from 'next/router';
+import React, { FC } from 'react';
+
+import { ISong } from '../../types/types';
 
 export interface Props {
   song: ISong;

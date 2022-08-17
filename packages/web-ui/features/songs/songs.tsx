@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { Song } from './song';
 import { Grid } from '@mui/material';
-import fetchSongs from '../../graphql/queries/fetch-songs';
+import React, { FC } from 'react';
+
 import deleteSong from '../../graphql/queries/delete-song';
+import fetchSongs from '../../graphql/queries/fetch-songs';
 import { ISong } from '../../types/types';
+import { Song } from './song';
 
 interface ISongsData {
   songs: ISong[];

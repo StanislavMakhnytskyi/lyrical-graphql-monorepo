@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
-import { useRouter } from 'next/router';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import { useRouter } from 'next/router';
+import React, { FC } from 'react';
+
 import { ISong } from '../../types/types';
 
 export interface Props {
