@@ -1,4 +1,7 @@
 import { useMutation } from '@apollo/client';
+import { FormControl } from '@mui/material';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
@@ -28,15 +31,20 @@ export const CreateSong: FC<Props> = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="song.title">Song Title:</label>
-      <input
-        id="songTitle"
-        name="songTitle"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.songTitle}
-      />
-      <button type="submit">Submit</button>
+      <FormControl sx={{ my: 2 }}>
+        <TextField
+          name="songTitle"
+          type="text"
+          size="small"
+          label="Song title"
+          onChange={formik.handleChange}
+          value={formik.values.songTitle}
+        />
+
+        <Button sx={{ my: 1 }} variant="outlined" type="submit">
+          Submit
+        </Button>
+      </FormControl>
     </form>
   );
 };
