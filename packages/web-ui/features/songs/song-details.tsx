@@ -5,8 +5,9 @@ import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
-import { ISong } from '../../types/types';
+import { ISong } from '../../types';
 import { CreateLyrics } from '../lyrics/create-lyrics';
+import Lyrics from '../lyrics/lyrics';
 
 export interface Props {
   song: ISong;
@@ -25,17 +26,11 @@ export const SongDetails: FC<Props> = ({ song }) => {
       <Grid item>
         <Typography variant="h3">{song.title}</Typography>
       </Grid>
-      {song.lyrics && (
-        <Grid item>
-          {song.lyrics.map((lyric, index) => (
-            <Typography key={index} variant="h5">
-              {lyric.content}
-            </Typography>
-          ))}
-        </Grid>
-      )}
       <Grid item>
-        <CreateLyrics></CreateLyrics>
+        <Lyrics lyrics={song.lyrics} />
+      </Grid>
+      <Grid item>
+        <CreateLyrics />
       </Grid>
     </Grid>
   );

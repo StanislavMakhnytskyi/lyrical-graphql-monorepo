@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 
 import deleteSong from '../../graphql/queries/delete-song';
 import fetchSongs from '../../graphql/queries/fetch-songs';
-import { ISong } from '../../types/types';
+import { ISong } from '../../types';
 import { Song } from './song';
 
 interface ISongsData {

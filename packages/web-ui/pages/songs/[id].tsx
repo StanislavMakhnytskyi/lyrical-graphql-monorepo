@@ -1,7 +1,7 @@
 import { SongDetails } from '../../features/songs/song-details';
 import { addApolloState, initializeApollo } from '../../graphql/apollo';
 import { fetchSong, fetchSongs } from '../../graphql/queries';
-import { IPage, ISong } from '../../types/types';
+import { IPage, ISong } from '../../types';
 
 interface Props {
   song: ISong;

@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
-import { ISong } from '../../types/types';
+import { ISong } from '../../types';
 
 export interface Props {
   song: ISong;

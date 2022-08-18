@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 import GlobalLayout from '../components/global-layout';
 import { useApollo } from '../graphql/apollo';
-import { IPage } from '../types/types';
+import { IPage } from '../types';
 
 type Props = AppProps & {
   Component: IPage;

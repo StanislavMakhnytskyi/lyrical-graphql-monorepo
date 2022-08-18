@@ -5,8 +5,13 @@ export type IPage<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactNode) => ReactNode;
 };
 
+export interface ILyric {
+  id: string;
+  content: string;
+}
+
 export interface ISong {
   id: string;
   title: string;
-  lyrics?: { content: string }[];
+  lyrics?: ILyric[];
 }
