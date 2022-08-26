@@ -23,7 +23,8 @@ export const CreateSong: FC<Props> = () => {
     initialValues: {
       songTitle: '',
     },
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
+      resetForm();
       await addSongMutation({ variables: { title: values.songTitle }, refetchQueries: [{ query: fetchSongs }] });
       await router.push('/songs');
     },
