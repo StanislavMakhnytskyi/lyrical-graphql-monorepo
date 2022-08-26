@@ -1,4 +1,4 @@
-import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, defaultDataIdFromObject, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
@@ -26,7 +26,11 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link: from([errorLink, httpLink]),
-    cache: new InMemoryCache({}),
+    cache: new InMemoryCache({
+      dataIdFromObject(responseObject) {
+        return (responseObject.id as string) || defaultDataIdFromObject(responseObject);
+      },
+    }),
   });
 }
 
