@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
 import createLyrics from '../../graphql/queries/create-lyrics';
-import fetchSong from '../../graphql/queries/fetch-songs';
+import fetchSong from '../../graphql/queries/fetch-song';
 
 export interface Props {}
 
@@ -26,7 +26,7 @@ export const CreateLyrics: FC<Props> = () => {
     onSubmit: async (values) => {
       await addLyricsMutation({
         variables: { content: values.lyricTitle, songId: router.query.id },
-        refetchQueries: [{ query: fetchSong }],
+        refetchQueries: [{ query: fetchSong, variables: { id: router.query.id } }],
       });
     },
   });
