@@ -1,10 +1,13 @@
+import { useMutation } from '@apollo/client';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 
+import likeLyric from '../../graphql/queries/like-lyric';
 import { ILyric } from '../../types';
 
 export interface Props {
@@ -12,6 +15,16 @@ export interface Props {
 }
 
 export const Lyrics: FC<Props> = ({ lyrics }) => {
+  const [likeLyricMutation] = useMutation(likeLyric);
+  const handleLikeLyric = useCallback(
+    (id: ILyric['id']) => () => {
+      likeLyricMutation({
+        variables: { id },
+      });
+    },
+    [likeLyricMutation]
+  );
+
   if (!lyrics) return null;
 
   return (
@@ -21,9 +34,12 @@ export const Lyrics: FC<Props> = ({ lyrics }) => {
           <Typography sx={{ display: 'flex' }} variant="h5">
             {lyric.content}
           </Typography>
-          <IconButton aria-label="thumb-up">
-            <ThumbUpIcon />
-          </IconButton>
+          <Box sx={{ display: 'flex', 'align-items': 'center' }}>
+            <IconButton onClick={handleLikeLyric(lyric.id)} aria-label="thumb-up">
+              <ThumbUpIcon />
+            </IconButton>
+            <Box sx={{ pl: 1 }}>{lyric.likes}</Box>
+          </Box>
         </Paper>
       ))}
     </Stack>

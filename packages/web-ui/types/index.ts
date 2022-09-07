@@ -8,6 +8,7 @@ export type IPage<P = {}> = NextPage<P> & {
 export interface ILyric {
   id: string;
   content: string;
+  likes?: number;
 }
 
 export interface ISong {
