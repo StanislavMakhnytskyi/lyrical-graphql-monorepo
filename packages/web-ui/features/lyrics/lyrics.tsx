@@ -17,9 +17,17 @@ export interface Props {
 export const Lyrics: FC<Props> = ({ lyrics }) => {
   const [likeLyricMutation] = useMutation(likeLyric);
   const handleLikeLyric = useCallback(
-    (id: ILyric['id']) => () => {
+    (id: ILyric['id'], likes: ILyric['likes']) => () => {
       likeLyricMutation({
         variables: { id },
+        optimisticResponse: {
+          __typename: 'Mutation',
+          likeLyric: {
+            __typename: 'LyricType',
+            id,
+            likes: likes + 1,
+          },
+        },
       });
     },
     [likeLyricMutation]
@@ -35,7 +43,7 @@ export const Lyrics: FC<Props> = ({ lyrics }) => {
             {lyric.content}
           </Typography>
           <Box sx={{ display: 'flex', 'align-items': 'center' }}>
-            <IconButton onClick={handleLikeLyric(lyric.id)} aria-label="thumb-up">
+            <IconButton onClick={handleLikeLyric(lyric.id, lyric.likes)} aria-label="thumb-up">
               <ThumbUpIcon />
             </IconButton>
             <Box sx={{ pl: 1 }}>{lyric.likes}</Box>
